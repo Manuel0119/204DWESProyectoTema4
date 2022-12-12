@@ -1,0 +1,189 @@
+body{
+    margin: 0;
+}
+.encabezado{
+    background-color: #2D3E52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 6em;
+    flex-wrap: nowrap;
+    position: sticky;
+    top: 0;
+    padding-left: 2em;
+}
+.encabezado > a, .container a{
+    color: white;
+    text-decoration: none;
+    margin: 1em;
+    font-size: 1.22em;
+    font-weight: bold;
+    padding: 1em;
+}
+.encabezado > a:hover{
+    color: black;
+    background-color: white;
+    border-radius: 5cm;
+}
+.codigophp{
+    left: 40%;
+    margin-top: 17em;
+    position: absolute;
+}
+.entradadatos{
+    width: max-content;
+    height: max-content;
+    left: 50%;
+}
+.entradadatos::placeholder {
+  color: red;
+  font-size: 1em;
+}
+.container{
+    display: flex;
+    margin: 4.52em 2em;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.container a{
+    color: #6CD7BD; 
+    margin: 0;
+    padding: 0;
+}
+#logo{
+    width: 45px;
+    height: 45px;
+    padding: 1em;
+    margin-left: 2em;
+    transition: transform .3s; 
+}
+#logo:hover{
+    transform: scale(1.1); 
+    padding: 1em;
+}
+li::marker{
+    color: white;
+}
+ul{
+    text-align: left;
+    margin: 0;
+}
+li{
+    margin-bottom: 1em;
+}
+h1 {
+    font-size: 1.8em;
+    font-weight: bolder;
+    color: #6CD7BD;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 0.5em;
+}
+.encabezado h2{
+    font-weight: bolder;
+    color: #6CD7BD;
+    text-align: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 0.5em; 
+}
+hr{
+    width: 9em;
+    height: 0.2em;
+    background-color: #bbbbbb;
+}
+p{
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: grey;
+    text-align: center;
+}
+table, td, th{
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+th{
+    font-size: 1.5em;
+    padding: 5px;
+}
+table{
+    width: 100%;
+    margin-bottom: 1em;
+}
+.tablaMostrar{
+    width: 95%;
+    text-align: center;
+    margin: 20px;
+}
+td{
+    padding: 7px;
+}
+tr td:nth-of-type(2), td:nth-of-type(3){
+   text-align: center;
+}
+.temas{
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: grey;
+    text-align: left;
+}
+footer{
+    width: 100%;
+    height: 54px;
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: white;
+    background: #2D3E52;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+footer p{
+    margin: 0;
+    width: 30%;
+}
+footer a{
+    background: #2D3E52;
+}
+#imagenfondo{
+    display: block;
+    margin: auto;
+    width: 1500px;
+    height: 610px;
+}
+.imagen2{
+    width: 30px;
+    height: 30px;
+}
+.volver{
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+}
+.volver2{
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+    position: fixed;
+    bottom: 60px;
+    right: 5px;
+}
+#g{
+    width: 4em;
+    float: right;
+}
+#curricu{
+    width: 2em;
+    float: right;
+    background-color: #2D3E52;
+}
+#portadadwes{
+    width: 32em;
+    height: 32em;
+}
+.cadena{color: blue;}
+.entero{color: red}
+.float{color: yellowgreen}
+.boolean{color: orange}
