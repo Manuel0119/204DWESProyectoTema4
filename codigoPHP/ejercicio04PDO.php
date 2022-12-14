@@ -5,7 +5,7 @@
         Utilidad: Este programa consiste en construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas
                   recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las
                   respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas.
-        Fecha-última-revisión: 25-11-2022.
+        Fecha-última-revisión: 14-12-2022.
     -->
     <head>
         <meta charset="UTF-8">
@@ -24,15 +24,21 @@
         <div class="codigophp" style="margin: 3em;left: 0; position: initial">
             <?php
             require_once '../conf/confDB.php';
-            //Comprobar si se ha enviado el formulario.
+            $sqlMostrarDepartamentos = "select * from T02_Departamento";
+            //Creamos la conexión e insertamos los insert utilizando el beginTransaction previamente.
             try {
+                echo "Consulta sin preparar";
                 $miDB = new PDO(DSN, USER, PASSWORD);
+                //Utilizamos el beginTransaction y ejecutamos los insert.
                 $miDB->beginTransaction();
                 $primerInsert = $miDB->exec("insert into T02_Departamento values('DCO','Departamento de Comunicaciones',now(),2500.864123,null)");
                 $segundoInsert = $miDB->exec("insert into T02_Departamento values('CAU','Centro de Atención al Usuario',now(),602.25,null)");
                 $tercerInsert = $miDB->exec("insert into T02_Departamento values('CDR','Control de Riesgos',now(),854.63,null)");
                 $miDB->commit();
-                $resultadoDepartamentos = $miDB->query("select * from T02_Departamento");
+                //Preparamos la consulta y la ejecutamos.
+                $resultadoDepartamentos = $miDB->prepare($sqlMostrarDepartamentos);
+                $resultadoDepartamentos->execute();
+                //Imprimimos la tablas con los departamentos.
                 printf("<h5>Número de registros: %s</h5>", $resultadoDepartamentos->rowCount());
                 $mostrarDepartamento = $resultadoDepartamentos->fetchObject();
                 echo "<table><thead><tr><th>CodigoDepartamento</th><th>DescripcionDepartamento</th><th>FechaCreacionDepartamento</th><th>VolumenDeNegocio</th><th>FechaBajaDepartamento</th></tr></thead><tbody>";

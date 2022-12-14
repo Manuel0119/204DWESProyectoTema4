@@ -31,6 +31,8 @@ define("DSN", 'mysql:host=db5010845816.hosting-data.io; dbname=dbs9174001;');
 define("USER", 'dbu5387073');
 // Contraseña con la que conectarse a la base de datos 
 define("PASSWORD", 'daw2_Sauces');
-
+//MySQLi
+define("HOST", 'db5010845816.hosting-data.io');
+define("DBNAME", 'dbs9174001');      
 ?>
 
