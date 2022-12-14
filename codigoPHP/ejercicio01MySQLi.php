@@ -5,7 +5,7 @@
         Utilidad: Este programa consiste en construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas
                   recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las
                   respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas.
-        Fecha-última-revisión: 21-11-2022.
+        Fecha-última-revisión: 14-12-2022.
     -->
     <head>
         <meta charset="UTF-8">
@@ -23,30 +23,29 @@
         </div>
         <div class="codigophp" style="margin: 0 15px; position: static">
             <?php
-            define("HOST", '192.168.20.19');
-            define("USER", 'User204DWESEncuestaTema4');
-            define("PASSWORD", 'paso');
-            define("DBNAME", 'DB204DWESEncuestaTema4');
+            //Declaración de tres constantes que almacenan los valores de la conexión.
+            require_once '../conf/confDB.php';
             try {
                 $miDB = new mysqli();
                 $miDB->connect(HOST, USER, PASSWORD, DBNAME);
-                $resultadoDepartamentos = $miDB->query("select * from T02_Departamento;");
+                echo 'Conexión establecida';
+                $resultadoDepartamentos = $miDB->query("select * from T02_Departamento");
                 //Imprimir por pantalla el número de registros afectados por la consulta.
-                printf("<h5>Número de registros: %s</h5><br>", $resultadoDepartamentos->num_rows);
+                print "<h5>Número de registros: $resultadoDepartamentos->num_rows</h5><br> ";
                 //Cargamos los resultados en un fetchobject().
-                $mostrarDepartamento = $resultadoDepartamentos->fetch_object();
+                $oMostrarDepartamento = $resultadoDepartamentos->fetch_object();
                 //Creamos una tabla en la que imprimiremos el nombre del atributo y el valor del mismo.
                 echo "<table><thead><tr><th>CodigoDepartamento</th><th>DescripcionDepartamento</th><th>FechaCreacionDepartamento</th><th>VolumenDeNegocio</th><th>FechaBajaDepartamento</th></tr></thead><tbody>";
-                while ($mostrarDepartamento != null) {
+                while ($oMostrarDepartamento != null) {
                     echo "<tr>";
                     //Recorrido de la fila cargada
-                    echo "<td style='text-align: center;'>$mostrarDepartamento->T02_CodDepartamento</td>"; //Obtener los códigos de los departamentos.
-                    echo "<td style='text-align: center;'>$mostrarDepartamento->T02_DescDepartamento</td>"; //Obtener las descripciones de los departamentos.
-                    echo "<td style='text-align: center;'>$mostrarDepartamento->T02_FechaCreacionDepartamento</td>"; //Obtener la fecha de creacion de los departamentos.
-                    echo "<td style='text-align: center;'>$mostrarDepartamento->T02_VolumenDeNegocio</td>"; //Obtener el volumen de negocio de los departamentos. 
-                    echo "<td style='text-align: center;'>$mostrarDepartamento->T02_FechaBajaDepartamento</td>"; //Obtener la fecha de baja de los departamentos.
+                    echo "<td style='text-align: center;'>$oMostrarDepartamento->T02_CodDepartamento</td>"; //Obtener los códigos de los departamentos.
+                    echo "<td style='text-align: center;'>$oMostrarDepartamento->T02_DescDepartamento</td>"; //Obtener las descripciones de los departamentos.
+                    echo "<td style='text-align: center;'>$oMostrarDepartamento->T02_FechaCreacionDepartamento</td>"; //Obtener la fecha de creacion de los departamentos.
+                    echo "<td style='text-align: center;'>$oMostrarDepartamento->T02_VolumenDeNegocio</td>"; //Obtener el volumen de negocio de los departamentos. 
+                    echo "<td style='text-align: center;'>$oMostrarDepartamento->T02_FechaBajaDepartamento</td>"; //Obtener la fecha de baja de los departamentos.
                     echo "</tr>";
-                    $mostrarDepartamento = $resultadoDepartamentos->fetch_object();
+                    $oMostrarDepartamento = $resultadoDepartamentos->fetch_object();
                 }
                 echo "</tbody></table>";
             } catch (mysqli_sql_exception $mse) {

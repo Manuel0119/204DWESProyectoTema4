@@ -5,7 +5,7 @@
         Utilidad: Este programa consiste en construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas
                   recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las
                   respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas.
-        Fecha-última-revisión: 16-11-2022.
+        Fecha-última-revisión: 14-12-2022.
     -->
     <head>
         <meta charset="UTF-8">
@@ -50,8 +50,9 @@
                 if ($aErrores['codigo'] == null) {
                     try {
                         $miDB = new PDO(DSN, USER, PASSWORD);
-                        $select = $miDB->query($sqlMostrarPorCodigo);
-                        if ($select->rowCount() > 0) {
+                        $consultaDepartamentosPorCodigo = $miDB->prepare($sqlMostrarPorCodigo);
+                        $consultaDepartamentosPorCodigo->execute();
+                        if ($consultaDepartamentosPorCodigo->rowCount() > 0) {
                             $aErrores['codigo'] = "El codigo de departamento ya existe...";
                         }
                     } catch (PDOException $miExcepcionPDO) {
